@@ -1,0 +1,12 @@
+Revision history for WWW-FreeProxyListsCom
+
+0.003   August 6, 2010
+        Fixed first element of the list being garbage
+
+0.002   Mar 16, 2008
+        Fixed improper prerequisites list which was missing
+        Class::Data::Accessor
+
+0.001   Mar 15, 2008
+        First version, released on an unsuspecting world.
+
