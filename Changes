@@ -1,6 +1,6 @@
 Revision history for WWW-FreeProxyListsCom
 
-1.002   xxx
+1.002   2016-02-06
         - Adopted by Steve Bertrand (STEVEB) (2016-02-04)
         - added git info to Makefile.PL
         - added .travis.yml
