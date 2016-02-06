@@ -1,14 +1,13 @@
 #!/usr/bin/env perl
-
 use strict;
 use warnings;
 
 use lib qw(../lib  lib);
+use Data::Dumper;
 use WWW::FreeProxyListsCom;
 
 my $prox = WWW::FreeProxyListsCom->new( debug => 1 );
 
-use Data::Dumper;
 my $ref = $prox->get_list( type => 'non_anonymous' );
 
 print "Got a list of " . @$ref . " proxies\nFiltering...\n";
