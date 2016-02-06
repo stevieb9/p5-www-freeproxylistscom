@@ -3,7 +3,7 @@ package WWW::FreeProxyListsCom;
 use warnings;
 use strict;
 
-our $VERSION = '0.003';
+our $VERSION = '1.002';
 
 use Carp;
 use URI;
@@ -11,15 +11,15 @@ use WWW::Mechanize;
 use HTML::TokeParser::Simple;
 use HTML::Entities;
 use Devel::TakeHashArgs;
+use base 'Class::Accessor::Grouped';
 
-use base 'Class::Data::Accessor';
-__PACKAGE__->mk_classaccessors qw(
+__PACKAGE__->mk_group_accessors( simple => qw/
     error
     mech
     debug
     list
     filtered_list
-);
+/);
 
 sub new {
     my $self = bless {}, shift;
@@ -42,7 +42,7 @@ sub get_list {
     my $self = shift;
 
     $self->$_(undef) for qw(error list);
-    
+
     get_args_as_hash(\@_, \my %args, {
             type        => 'elite',
             max_pages   => 1,
@@ -94,7 +94,7 @@ sub get_list {
     my @proxies;
     for ( @links ) {
         unless ( $mech->get($_)->is_success ) {
-            $self->debug 
+            $self->debug
                 and carp 'Network error: ' . $mech->res->status_line;
             next;
         }
@@ -112,7 +112,7 @@ sub filter {
     my $self = shift;
 
     $self->$_(undef) for qw(error filtered_list);
-    
+
     get_args_as_hash( \@_, \my %args)
         or croak $@;
 
@@ -211,9 +211,16 @@ sub _set_error {
 1;
 __END__
 
+=encoding utf8
+
 =head1 NAME
 
 WWW::FreeProxyListsCom - get proxy lists from http://www.freeproxylists.com
+
+=for html
+<a href="http://travis-ci.org/stevieb9/p5-www-freeproxylistscom"><img src="https://secure.travis-ci.org/stevieb9/p5-www-freeproxylistscom.png"/>
+<a href='https://coveralls.io/github/stevieb9/p5-www-freeproxylistscom?branch=master'><img src='https://coveralls.io/repos/stevieb9/p5-www-freeproxylistscom/badge.svg?branch=master&service=github' alt='Coverage Status' /></a>
+
 
 =head1 SYNOPSIS
 
@@ -455,48 +462,27 @@ When called with an argument will set the debug flag to the value specified.
 
 =head1 AUTHOR
 
+Steve Bertrand C<< <steveb at cpan.org> >>
+
+Adopted on Feb 4, 2016 from:
+
 Zoffix Znet, C<< <zoffix at cpan.org> >>
 (L<http://zoffix.com>, L<http://haslayout.net>)
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-www-freeproxylistscom at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=WWW-FreeProxyListsCom>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
-
-=head1 SUPPORT
-
-You can find documentation for this module with the perldoc command.
-
-    perldoc WWW::FreeProxyListsCom
-
-You can also look for information at:
-
-=over 4
-
-=item * RT: CPAN's request tracker
-
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=WWW-FreeProxyListsCom>
-
-=item * AnnoCPAN: Annotated CPAN documentation
-
-L<http://annocpan.org/dist/WWW-FreeProxyListsCom>
-
-=item * CPAN Ratings
-
-L<http://cpanratings.perl.org/d/WWW-FreeProxyListsCom>
-
-=item * Search CPAN
-
-L<http://search.cpan.org/dist/WWW-FreeProxyListsCom>
-
-=back
+Please report any bugs or feature requests to L<https://github.com/stevieb9/p5-www-freeproxylistscom/issues>.
 
 =head1 COPYRIGHT & LICENSE
+
+Copyright 2016 Steve Bertrand
 
 Copyright 2008 Zoffix Znet, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
-under the same terms as Perl itself.
+under the terms of either: the GNU General Public License as published
+by the Free Software Foundation; or the Artistic License.
+
+See L<http://dev.perl.org/licenses/> for more information.
 
 =cut
