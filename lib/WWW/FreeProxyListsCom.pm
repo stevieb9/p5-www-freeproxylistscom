@@ -3,7 +3,7 @@ package WWW::FreeProxyListsCom;
 use warnings;
 use strict;
 
-our $VERSION = '1.002';
+our $VERSION = '1.003;
 
 use Carp;
 use URI;

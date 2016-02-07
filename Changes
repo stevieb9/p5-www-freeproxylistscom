@@ -1,5 +1,8 @@
 Revision history for WWW-FreeProxyListsCom
 
+1.003   xxx
+        - added Test::Perl::Critic tests
+
 1.002   2016-02-07
         - Adopted by Steve Bertrand (STEVEB) (2016-02-04)
         - added git info to Makefile.PL
