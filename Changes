@@ -5,6 +5,7 @@ Revision history for WWW-FreeProxyListsCom
         - added git info to Makefile.PL
         - added .travis.yml
         - updated license, removed LICENSE file
+        - added travis/coverage badges
 
 1.001   2013-12-27
         - Fixed broken test and prereqs
