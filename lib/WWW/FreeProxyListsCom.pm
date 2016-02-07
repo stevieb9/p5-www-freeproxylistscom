@@ -462,12 +462,12 @@ When called with an argument will set the debug flag to the value specified.
 
 =head1 AUTHOR
 
-Steve Bertrand C<< <steveb at cpan.org> >>
-
-Adopted on Feb 4, 2016 from:
-
 Zoffix Znet, C<< <zoffix at cpan.org> >>
 (L<http://zoffix.com>, L<http://haslayout.net>)
+
+Adopted on Feb 4, 2016 and currently maintained by:
+
+Steve Bertrand C<< <steveb at cpan.org> >>
 
 =head1 BUGS
 

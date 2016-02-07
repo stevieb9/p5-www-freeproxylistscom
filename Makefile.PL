@@ -8,14 +8,14 @@ WriteMakefile
     'META_MERGE' => {
     'meta-spec' => { version => 2 },
         resources => {
-        bugtracker => {
-        web => 'https://github.com/stevieb9/p5-www-freeproxylistscom/issues',
-        },
-        repository => {
-        type => 'git',
-        url => 'https://github.com/stevieb9/p5-www-freeproxylistscom.git',
-        web => 'https://github.com/stevieb9/p5-www-freeproxylistscom',
-        },
+            bugtracker => {
+                web => 'https://github.com/stevieb9/p5-www-freeproxylistscom/issues',
+            },
+            repository => {
+                type => 'git',
+                url => 'https://github.com/stevieb9/p5-www-freeproxylistscom.git',
+                web => 'https://github.com/stevieb9/p5-www-freeproxylistscom',
+            },
         },
     },
     'PREREQ_PM' => {

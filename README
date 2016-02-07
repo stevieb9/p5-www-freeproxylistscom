@@ -241,12 +241,12 @@ METHODS
 
 AUTHOR
 
-    Steve Bertrand <steveb at cpan.org>
-
-    Adopted on Feb 4, 2016 from:
-
     Zoffix Znet, <zoffix at cpan.org> (http://zoffix.com,
     http://haslayout.net)
+
+    Adopted on Feb 4, 2016 and currently maintained by:
+
+    Steve Bertrand <steveb at cpan.org>
 
 BUGS
 
