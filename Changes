@@ -10,6 +10,7 @@ Revision history for WWW-FreeProxyListsCom
         - added _url() method which sets/fetches 'url' param for testing
         - added t/03-error test
         - changed tests that fail in t/02-fetch to properly skip
+        - added t/04-filter tests
 
 1.002   2016-02-07
         - Adopted by Steve Bertrand (STEVEB) (2016-02-04)
