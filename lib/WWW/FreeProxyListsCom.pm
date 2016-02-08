@@ -28,7 +28,6 @@ sub new {
         \@_, \my %args,
         {
             timeout => 30,
-            url     => 'http://www.freeproxylists.com',
         }
     ) or croak $@;
 
@@ -38,13 +37,11 @@ sub new {
                     .' Gecko/20080207 Ubuntu/7.10 (gutsy) Firefox/2.0.0.12',
     );
 
-    $self->_url( $args{url} );
     $self->mech( $args{mech} );
     $self->debug( $args{debug} );
 
     return $self;
 }
-
 sub get_list {
     my $self = shift;
 
@@ -77,7 +74,7 @@ sub get_list {
 
     my $mech = $self->mech;
     my $page_type = $page_for{ $args{type} };
-    my $url = $self->_url();
+    my $url = $self->_url;
 
     my $uri = URI->new(
         "$url/$page_type.html"
@@ -119,7 +116,6 @@ sub get_list {
 
     return $self->list( \@proxies );
 }
-
 sub filter {
     my $self = shift;
 
@@ -219,7 +215,7 @@ sub _set_error {
 sub _url {
     my ($self, $url) = @_;
     $self->{url} = $url if defined $url;
-    return $self->{url};
+    return defined $self->{url} ? $self->{url} : 'http://freeproxylists.com';
 }
 1;
 __END__

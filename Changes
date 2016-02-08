@@ -7,8 +7,7 @@ Revision history for WWW-FreeProxyListsCom
           each test iteration (fixes #1)
         - moved xt/ tests to t/
         - corrected code that was breaking new critic tests (fixes #2)
-        - new() now takes a url => 'link' param, primarily for testing fails
-        - added _url() method which sets/fetches 'url' param
+        - added _url() method which sets/fetches 'url' param for testing
         - added t/03-error test
         - changed tests that fail in t/02-fetch to properly skip
 
