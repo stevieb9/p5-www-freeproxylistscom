@@ -2,7 +2,7 @@
 
 use strict;
 use warnings;
-use Test::More tests => 65;
+use Test::More;
 
 BEGIN {
     use_ok('Carp');
@@ -16,29 +16,35 @@ BEGIN {
 }
 
 diag( "Testing WWW::FreeProxyListsCom $WWW::FreeProxyListsCom::VERSION, Perl $], $^X" );
+
 my $o = WWW::FreeProxyListsCom->new(timeout => 10);
+
 isa_ok($o, 'WWW::FreeProxyListsCom');
-can_ok($o,qw(   new error
-    mech
-    debug
-    list
-    filtered_list
-    get_list
-    filter
-    _parse_list
-    _set_error));
+can_ok($o, qw(
+        new error
+        mech
+        debug
+        list
+        filtered_list
+        get_list
+        filter
+        _parse_list
+        _set_error
+     )
+);
 
 isa_ok( $o->mech, 'WWW::Mechanize' );
 
-for my $list_type ( qw( elite anonymous https standard us socks) ) {
+for my $list_type ( qw(elite anonymous https standard us socks) ) {
     diag "\nTesting the $list_type lists\n\n";
 SKIP: {
-    my $list_ref = $o->get_list
+
+    my $list_ref = $o->get_list(type => $list_type)
         or do{ diag "Got error: " . $o->error; skip 'Some error', 9};
 
     diag "\nGot " . @$list_ref . " proxies in $list_type list\n\n";
 
-    is( ref $list_ref, 'ARRAY', 'get_list() must return an arrayref' );
+    is( ref $list_ref, 'ARRAY', 'get_list() returns an arrayref' );
 
     my ($flail,$flail_keys) = (0,0);
     my %test;
@@ -77,3 +83,5 @@ SKIP: {
 }
 
 }
+
+done_testing();

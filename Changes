@@ -2,6 +2,11 @@ Revision history for WWW-FreeProxyListsCom
 
 1.003   xxx
         - added Test::Perl::Critic tests
+        - get_list() in t/00-load.t wasn't passing in the type param,
+          which resulted in the default 'elite' type being used on\
+          each test iteration (fixes #1)
+        - moved xt/ tests to t/
+        - corrected code that was breaking new critic tests (fixes #2)
 
 1.002   2016-02-07
         - Adopted by Steve Bertrand (STEVEB) (2016-02-04)

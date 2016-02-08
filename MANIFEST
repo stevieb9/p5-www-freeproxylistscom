@@ -8,10 +8,8 @@ MANIFEST.SKIP
 META.json
 META.yml
 README
+t/00-critic.t
 t/00-load.t
 t/kwalitee.t
 t/pod-coverage.t
 t/pod.t
-xt/kwalitee.t
-xt/pod-coverage.t
-xt/pod.t
