@@ -13,6 +13,8 @@ t/01-load.t
 t/02-fetch.t
 t/03-mech_error.t
 t/04-filter.t
+t/05-timeout.t
+t/06-_set_error.t
 t/kwalitee.t
 t/pod-coverage.t
 t/pod.t

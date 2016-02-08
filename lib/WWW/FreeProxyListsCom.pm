@@ -81,7 +81,7 @@ sub get_list {
     );
 
     $mech->get($uri)->is_success
-        or return $self->_set_error($mech,'net');
+        or return $self->_set_error($mech, 'net');
 
     $page_type eq 'anonymous'
         and $page_type = 'anon';
