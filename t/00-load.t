@@ -35,7 +35,7 @@ can_ok($o, qw(
 
 isa_ok( $o->mech, 'WWW::Mechanize' );
 
-for my $list_type ( qw(elite anonymous https standard us socks) ) {
+for my $list_type ( qw(elite anonymous https standard ca fr us uk socks) ) {
     diag "\nTesting the $list_type lists\n\n";
 SKIP: {
 

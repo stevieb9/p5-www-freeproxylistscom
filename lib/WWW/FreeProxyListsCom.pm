@@ -52,12 +52,15 @@ sub get_list {
     my %page_for = (
         non_anonymous   => 'non-anonymous',
         map { $_ => $_ } qw(
-            elite
-            anonymous
-            https
-            standard
-            us
-            socks
+                elite
+                anonymous
+                https
+                standard
+                socks
+                us
+                uk
+                ca
+                fr
         ),
     );
 
@@ -317,18 +320,20 @@ as follows:
 
     ->get_list( type => 'standard' );
 
-B<Optional>. Specifies the list of proxies to fetch. B<Defaults to:>
-C<elite>. Possible arguments are
-as follows (valid C<type> values are on the left, corresponding "list" site's
-menu link names are on the right):
+B<Optional>. Specifies the list of proxies to fetch. B<Defaults to:> C<elite>.
+Possible arguments are as follows. Note all are plain HTTP except C<socks> and
+C<https>.
 
-    elite           => http elite proxies
-    anonymous       => http anonymous lists
-    non_anonymous   => http non-anonymous
-    https           => https (SSL enabled)
-    standard        => http standard ports
-    us              => us proxies only
-    socks           => socks (version 4/5)
+    elite           = Elite (hides you entirely)
+    anonymous       = Anonymous (hides you, but shows you're using a proxy)
+    non_anonymous   = non-anonymous (no masking at all)
+    https           = HTTPS (SSL enabled, may not hide you)
+    standard        = standard HTTP/HTTPS/SOCKS/Proxy ports (may not hide you)
+    ca              = Canada
+    fr              = France
+    us              = United States
+    uk              = United Kingdom
+    socks           = SOCKS (version 4/5)
 
 =head3 C<max_pages>
 
