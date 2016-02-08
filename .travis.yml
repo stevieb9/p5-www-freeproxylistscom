@@ -38,5 +38,5 @@ after_success:
 
 matrix:
   include:
-    - perl: 5.20
+    - perl: 5.18
       env: COVERAGE=1
