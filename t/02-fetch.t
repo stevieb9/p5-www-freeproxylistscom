@@ -1,21 +1,12 @@
-#!/usr/bin/env perl
-
-use strict;
+#!/usr/bin/perl
 use warnings;
+use strict;
+
 use Test::More;
 
 BEGIN {
-    use_ok('Carp');
-    use_ok('URI');
-    use_ok('WWW::Mechanize');
-    use_ok('HTML::TokeParser::Simple');
-    use_ok('HTML::Entities');
-    use_ok('Devel::TakeHashArgs');
-    use_ok('Class::Accessor::Grouped');
 	use_ok( 'WWW::FreeProxyListsCom' );
 }
-
-diag( "Testing WWW::FreeProxyListsCom $WWW::FreeProxyListsCom::VERSION, Perl $], $^X" );
 
 my $o = WWW::FreeProxyListsCom->new(timeout => 10);
 
@@ -36,13 +27,13 @@ can_ok($o, qw(
 isa_ok( $o->mech, 'WWW::Mechanize' );
 
 for my $list_type ( qw(elite anonymous https standard ca fr us uk socks) ) {
-    diag "\nTesting the $list_type lists\n\n";
+    print "\nTesting the $list_type lists\n";
 SKIP: {
 
     my $list_ref = $o->get_list(type => $list_type)
         or do{ diag "Got error: " . $o->error; skip 'Some error', 9};
 
-    diag "\nGot " . @$list_ref . " proxies in $list_type list\n\n";
+    print "Got " . @$list_ref . " proxies in $list_type list\n";
 
     is( ref $list_ref, 'ARRAY', 'get_list() returns an arrayref' );
 
@@ -80,8 +71,7 @@ SKIP: {
     for ( keys %test ) {
         is ( $test{$_}, 0, "test for $_ failed $test{$_} times" );
     }
-}
-
+}#/SKIP 
 }
 
 done_testing();
