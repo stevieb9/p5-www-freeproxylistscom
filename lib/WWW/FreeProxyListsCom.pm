@@ -23,8 +23,14 @@ __PACKAGE__->mk_group_accessors( simple => qw/
 
 sub new {
     my $self = bless {}, shift;
-    get_args_as_hash(\@_, \my %args, { timeout => 30 } )
-        or croak $@;
+
+    get_args_as_hash(
+        \@_, \my %args,
+        {
+            timeout => 30,
+            url     => 'http://www.freeproxylists.com',
+        }
+    ) or croak $@;
 
     $args{mech} ||= WWW::Mechanize->new(
         timeout => $args{timeout},
@@ -32,6 +38,7 @@ sub new {
                     .' Gecko/20080207 Ubuntu/7.10 (gutsy) Firefox/2.0.0.12',
     );
 
+    $self->_url( $args{url} );
     $self->mech( $args{mech} );
     $self->debug( $args{debug} );
 
@@ -70,8 +77,10 @@ sub get_list {
 
     my $mech = $self->mech;
     my $page_type = $page_for{ $args{type} };
+    my $url = $self->_url();
+
     my $uri = URI->new(
-        "http://www.freeproxylists.com/$page_type.html"
+        "$url/$page_type.html"
     );
 
     $mech->get($uri)->is_success
@@ -153,8 +162,6 @@ sub filter {
     }
     return $self->filtered_list( \@filtered );
 }
-
-
 sub _parse_list {
     my ( $self, $content ) = @_;
 
@@ -199,7 +206,6 @@ sub _parse_list {
     shift @data; # quick and dirty fix to rid of bad data.
     return \@data;
 }
-
 sub _set_error {
     my ( $self, $mech_or_error, $type ) = @_;
     if ( defined $type and $type eq 'net' ) {
@@ -210,7 +216,11 @@ sub _set_error {
     }
     return;
 }
-
+sub _url {
+    my ($self, $url) = @_;
+    $self->{url} = $url if defined $url;
+    return $self->{url};
+}
 1;
 __END__
 

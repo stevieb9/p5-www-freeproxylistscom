@@ -26,12 +26,16 @@ can_ok($o, qw(
 
 isa_ok( $o->mech, 'WWW::Mechanize' );
 
-for my $list_type ( qw(elite anonymous https standard ca fr us uk socks) ) {
+for my $list_type ( qw(elite anonymous x https standard ca fr us uk socks) ) {
     print "\nTesting the $list_type lists\n";
 SKIP: {
 
-    my $list_ref = $o->get_list(type => $list_type)
-        or do{ diag "Got error: " . $o->error; skip 'Some error', 9};
+    my $list_ref;
+
+    eval { $list_ref = $o->get_list(type => $list_type); };
+    if ($@){
+        skip 'received error', 9;
+    }
 
     print "Got " . @$list_ref . " proxies in $list_type list\n";
 
