@@ -23,7 +23,7 @@ use WWW::FreeProxyListsCom;
         $ca = $p->get_list(type => 'ca');
     };
     if ($@){
-        like ($@, qr/Error Geting/, "timeout broken, but we've skipped");
+        like ($@, qr/Error GETing/, "timeout broken, but we've skipped");
     }
     else {
         is (ref $ca->[1], 'HASH', "timeout ok, we got success");
