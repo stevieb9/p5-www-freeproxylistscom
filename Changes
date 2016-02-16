@@ -1,5 +1,8 @@
 Revision history for WWW-FreeProxyListsCom
 
+1.004   2016-02-16
+        - changed use() to require() in POD test eval()s
+
 1.003   2016-02-08
         - added Test::Perl::Critic tests
         - get_list() in t/00-load.t wasn't passing in the type param, which
