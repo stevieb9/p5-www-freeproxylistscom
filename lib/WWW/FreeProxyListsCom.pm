@@ -224,7 +224,7 @@ __END__
 
 =head1 NAME
 
-WWW::FreeProxyListsCom - get proxy lists from http://www.freeproxylists.com
+WWW::FreeProxyListsCom - Fetch proxy lists from http://www.freeproxylists.com
 
 =for html
 <a href="http://travis-ci.org/stevieb9/p5-www-freeproxylistscom"><img src="https://secure.travis-ci.org/stevieb9/p5-www-freeproxylistscom.png"/>
