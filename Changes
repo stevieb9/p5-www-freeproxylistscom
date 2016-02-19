@@ -1,5 +1,8 @@
 Revision history for WWW-FreeProxyListsCom
 
+1.005   2016-02-19
+        - removed t/kwalitee.t
+
 1.004   2016-02-16
         - changed use() to require() in POD test eval()s
         - fixed typo in regex check in t/05
