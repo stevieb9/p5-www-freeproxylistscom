@@ -3,7 +3,7 @@ package WWW::FreeProxyListsCom;
 use warnings;
 use strict;
 
-our $VERSION = '1.006';
+our $VERSION = '1.007';
 
 use Carp;
 use Data::Dumper;
