@@ -163,10 +163,7 @@ sub filter {
 sub urls {
     my ($self) = @_;
 
-    my @urls;
-    my $proxies;
-
-    $proxies = $self->filtered_list ? $self->filtered_list : $self->list;
+    my $proxies = $self->filtered_list ? $self->filtered_list : $self->list;
 
     if (! @$proxies){
         $self->_set_error(
@@ -174,13 +171,14 @@ sub urls {
         );
     }
 
+    my @urls;
+
     for (@$proxies){
-        if ($_->{is_https} eq 'true'){
-            push @urls, join '', 'https://', join ':', @$_{qw(ip port)};
-        }
-        else {
-            push @urls, join '', 'http://', join ':', @$_{qw(ip port)};
-        }
+        my $protocol = $_->{is_https} eq 'true'
+            ? 'https'
+            : 'http';
+
+            push @urls, join '', "$protocol://", join ':', @$_{qw(ip port)};
     }
 
     return $self->url_list(\@urls);
