@@ -1,7 +1,7 @@
 Revision history for WWW-FreeProxyListsCom
 
 1.007 UNREL
-        -
+        - remove perl 5.8 from Travis-CI
 
 1.006   2018-02-07
         - added urls(), returns a list of stringified proxy URLs. Perfect for
