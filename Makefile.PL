@@ -8,6 +8,7 @@ WriteMakefile
 (
     'NAME' => 'WWW::FreeProxyListsCom',
     'VERSION_FROM' => 'lib/WWW/FreeProxyListsCom.pm',
+    'LICENSE' => 'perl',
     'META_MERGE' => {
     'meta-spec' => { version => 2 },
         resources => {
